@@ -136,6 +136,7 @@ const resetCss = css`
     min-height: 100vh;
     display: grid;
     grid-template-rows: 100px 1fr 30px;
+    background-color: #efefef;
   }
 `;
 
