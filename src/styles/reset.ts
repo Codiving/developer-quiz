@@ -125,8 +125,17 @@ const resetCss = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  /* custom css */
   * {
     box-sizing: border-box;
+  }
+
+  #__next {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 100px 1fr 30px;
   }
 `;
 
