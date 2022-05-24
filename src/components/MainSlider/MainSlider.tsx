@@ -33,7 +33,8 @@ const Slider = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "column"
+    flexDirection: "column",
+    gap: "1em"
   };
 });
 
@@ -42,7 +43,7 @@ const MainSlider = () => {
 
   const onAddIndex = useCallback(() => setIndex(prev => prev + 1), []);
 
-  useInterval(onAddIndex, 3000);
+  useInterval(onAddIndex, 5000);
 
   useEffect(() => {
     if (index === sliderCount)
@@ -50,10 +51,6 @@ const MainSlider = () => {
         setIndex(0);
       }, 500);
   }, [index]);
-
-  // const onClick = () => {
-  //   setIndex(prev => prev + 1);
-  // };
 
   return (
     <Container>
