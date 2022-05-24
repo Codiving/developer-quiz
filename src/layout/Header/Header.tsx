@@ -37,11 +37,9 @@ const Header = () => {
   return (
     <Container>
       <Contents>
-        <Link href="/">
-          <MainTitle component="h1" fontSize={32} fontWeight={600}>
-            개발자 상식 Quiz
-          </MainTitle>
-        </Link>
+        <MainTitle component="h1" fontSize={32} fontWeight={600}>
+          <Link href="/">개발자 상식 Quiz</Link>
+        </MainTitle>
       </Contents>
     </Container>
   );
