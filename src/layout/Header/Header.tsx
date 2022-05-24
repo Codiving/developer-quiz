@@ -14,7 +14,7 @@ const Contents = styled("div", {
 })(() => {
   return {
     maxWidth: maxWidth,
-    width: "100%",
+    width: "90%",
     height: "100%",
     margin: "0 auto",
     display: "flex",
