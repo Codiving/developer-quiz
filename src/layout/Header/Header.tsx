@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import { maxWidth } from "src/common";
+import { Typography } from "src/components";
 
 const Container = styled("header", {
   label: "Header"
@@ -23,11 +25,23 @@ const Contents = styled("div", {
   };
 });
 
+const MainTitle = styled(Typography, {
+  label: "MainTitle"
+})(() => {
+  return {
+    cursor: "pointer"
+  };
+});
+
 const Header = () => {
   return (
     <Container>
       <Contents>
-        <span>개발자 상식 Quiz</span>
+        <Link href="/">
+          <MainTitle component="h1" fontSize={32} fontWeight={600}>
+            개발자 상식 Quiz
+          </MainTitle>
+        </Link>
       </Contents>
     </Container>
   );
