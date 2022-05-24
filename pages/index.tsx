@@ -1,8 +1,22 @@
+import styled from "@emotion/styled";
 import type { NextPage } from "next";
-import { MainSlider } from "src/components";
+import { MainSlider, StartButton } from "src/components";
+
+const Container = styled("div", {
+  label: "Home"
+})(() => {
+  return {
+    overflow: "hidden"
+  };
+});
 
 const Home: NextPage = () => {
-  return <MainSlider />;
+  return (
+    <Container>
+      <MainSlider />
+      <StartButton />
+    </Container>
+  );
 };
 
 export default Home;
