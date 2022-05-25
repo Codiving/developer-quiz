@@ -143,6 +143,15 @@ const resetCss = css`
     font-family: "ONE-Mobile-POP";
   }
 
+  a,
+  a:visited,
+  a:link,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: black;
+  }
+
   #__next {
     position: relative;
     min-height: 100vh;
