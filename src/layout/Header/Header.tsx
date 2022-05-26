@@ -29,7 +29,8 @@ const MainTitle = styled(Typography, {
   label: "MainTitle"
 })(() => {
   return {
-    cursor: "pointer"
+    cursor: "pointer",
+    fontFamily: "ONE-Mobile-POP"
   };
 });
 
