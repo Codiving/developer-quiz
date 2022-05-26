@@ -135,12 +135,20 @@ const resetCss = css`
     font-style: normal;
   }
 
+  @font-face {
+    font-family: "Tium";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/Tium.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   * {
     box-sizing: border-box;
   }
 
   body * {
-    font-family: "ONE-Mobile-POP";
+    font-family: "ONE-Mobile-POP", "Tium";
   }
 
   a,
