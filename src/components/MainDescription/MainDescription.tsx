@@ -88,6 +88,7 @@ const ImageWrap = styled("div")(() => {
 const Image = styled("img")(() => {
   return {
     width: "100%",
+    height: "100%",
     padding: "2rem",
     borderRadius: 24,
     "&:hover": {}
@@ -142,7 +143,7 @@ const MainDescription = (props: MainDescriptionProps) => {
           )}
         </DescriptionWrap>
         <ImageWrap>
-          <Image src={image} alt="" />
+          <Image src={image} alt={alt} />
         </ImageWrap>
       </Warp>
     </Container>
