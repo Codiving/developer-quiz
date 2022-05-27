@@ -15,7 +15,6 @@ const Home: NextPage = () => {
   return (
     <Container>
       <MainSlider />
-      {/* <StartButton /> */}
       <MainDescription
         title="스피드 객관식 퀴즈 !"
         texts={[
@@ -39,12 +38,6 @@ const Home: NextPage = () => {
         buttonText="가상 면접보기"
         link="/"
       />
-      {/* <MainDescription
-      title=""
-        texts={["1111", "2222", "3333"]}
-        image="https://assets.awwwards.com/awards/media/cache/thumb_417_299/submissions/2022/05/6284ca3a3785e878211698.jpg"
-        alt="이미지"
-      /> */}
     </Container>
   );
 };
