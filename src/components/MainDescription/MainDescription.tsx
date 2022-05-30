@@ -1,19 +1,8 @@
 import styled from "@emotion/styled";
-import { maxWidth } from "src/common";
-import Button from "../Button";
-import Typography from "../Typography";
+import { useCallback, useState } from "react";
+import { Description } from "./components";
 
-interface MainDescriptionProps {
-  title: string;
-  texts: string[];
-  image: string;
-  isImageRight?: boolean;
-  alt: string;
-  buttonText?: string;
-  link?: string;
-}
-
-const Container = styled("div", {
+const Container = styled("section", {
   label: "MainDescription"
 })(() => {
   return {
@@ -21,131 +10,38 @@ const Container = styled("div", {
   };
 });
 
-const Warp = styled("div", {
-  label: "MainDescriptionWrap"
-})(() => {
-  return {
-    display: "flex",
-    justifyContent: "space-around",
-    maxWidth: maxWidth,
-    width: "90%",
-    margin: "0 auto"
-  };
-});
+const MainDescription = () => {
+  const [fade, setFade] = useState(false);
 
-const DescriptionWrap = styled("div")<{ order: number }>(({ order }) => {
-  return {
-    order,
-    flex: 1,
-    padding: "2rem",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "3rem"
-  };
-});
-
-const TextWrap = styled("div", {
-  label: "TextWrap"
-})(() => {
-  return {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "5rem"
-  };
-});
-
-const MainText = styled(Typography, {
-  label: "MainText"
-})(() => {
-  return {
-    fontSize: "2rem",
-    fontWeight: "bold"
-  };
-});
-
-const DescriptionTextWrap = styled("div", {
-  label: "DescriptionTextWrap"
-})(() => {
-  return {};
-});
-
-const DescriptionText = styled(Typography, {
-  label: "DescriptionText"
-})(() => {
-  return { marginBottom: 10, fontSize: 20, fontFamily: "Tium" };
-});
-
-const ImageWrap = styled("div")(() => {
-  return {
-    flex: 1
-  };
-});
-
-const Image = styled("img")(() => {
-  return {
-    width: "100%",
-    height: "100%",
-    padding: "2rem",
-    borderRadius: 24,
-    "&:hover": {}
-  };
-});
-
-const GoToButton = styled(Button, {
-  label: "GoToButton"
-})(() => {
-  return {
-    fontSize: 20,
-    width: 200,
-    border: "2px solid #afbbc5",
-    boxShadow: "inset 0 0 0 0 #756a71",
-    color: "black",
-    transition: "ease-out 0.4s",
-    "&:hover": {
-      boxShadow: "inset 0 0 0 50px #756a71"
-    }
-  };
-});
-
-const MainDescription = (props: MainDescriptionProps) => {
-  const {
-    title,
-    texts,
-    image,
-    isImageRight = true,
-    alt,
-    buttonText,
-    link
-  } = props;
-
-  const order = isImageRight ? 0 : 1;
+  const onFade = useCallback(() => setFade(prev => !prev), []);
 
   return (
     <Container>
-      <Warp>
-        <DescriptionWrap order={order}>
-          <TextWrap>
-            <MainText component="h3">{title}</MainText>
-            <DescriptionTextWrap>
-              {texts.map(text => (
-                <DescriptionText component="p" key={text}>
-                  {text}
-                </DescriptionText>
-              ))}
-            </DescriptionTextWrap>
-          </TextWrap>
-          {buttonText && link && (
-            <GoToButton color="#afbbc5">{buttonText}</GoToButton>
-          )}
-        </DescriptionWrap>
-        <ImageWrap>
-          <Image src={image} alt={alt} />
-        </ImageWrap>
-      </Warp>
+      <Description
+        title="스피드 객관식 퀴즈 !"
+        texts={[
+          "내가 어떠한 개념을 모르고 있는 지 궁금한 경우가 있습니다.",
+          "테스트 하고 싶은 카테고리만 골라 객관식 문제를 풀어봅시다."
+        ]}
+        image="https://assets.awwwards.com/awards/media/cache/thumb_417_299/submissions/2022/05/6284ca3a3785e878211698.jpg"
+        alt="이미지"
+        buttonText="퀴즈 풀어보기"
+        fade={fade}
+        onFade={onFade}
+      />
+      <Description
+        title="가상 면접"
+        texts={[
+          "취업 면접 시 나올만한 질문들을 모았습니다.",
+          "모르는 내용인 경우 추천 키워드를 통해 공부합시다."
+        ]}
+        image="https://assets.awwwards.com/awards/media/cache/thumb_417_299/submissions/2022/05/6284ca3a3785e878211698.jpg"
+        alt="이미지"
+        isImageRight={false}
+        buttonText="가상 면접보기"
+        fade={fade}
+        onFade={onFade}
+      />
     </Container>
   );
 };
