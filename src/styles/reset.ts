@@ -147,6 +147,11 @@ const resetCss = css`
     box-sizing: border-box;
   }
 
+  body {
+    position: relative;
+    min-height: 100vh;
+  }
+
   body * {
     font-family: "ONE-Mobile-POP", "Tium";
   }
@@ -162,10 +167,13 @@ const resetCss = css`
 
   #__next {
     position: relative;
-    min-height: 100vh;
     display: grid;
     grid-template-rows: 100px 1fr 30px;
     background-color: #efefef;
+  }
+
+  .fixed-height {
+    height: 100vh !important;
   }
 `;
 
