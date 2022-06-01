@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Typography } from "src/components";
 
 const Container = styled("footer", {
   label: "FooterContainer"
@@ -7,14 +8,14 @@ const Container = styled("footer", {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#7878b7"
+    backgroundColor: "#d6d6d6"
   };
 });
 
 const Footer = () => {
   return (
     <Container>
-      <span>Made by Codiving</span>
+      <Typography>Made by Codiving</Typography>
     </Container>
   );
 };

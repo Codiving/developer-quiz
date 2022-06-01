@@ -6,9 +6,7 @@ import { Typography } from "src/components";
 const Container = styled("header", {
   label: "Header"
 })(() => {
-  return {
-    backgroundColor: "#333333"
-  };
+  return {};
 });
 
 const Contents = styled("div", {
@@ -20,8 +18,7 @@ const Contents = styled("div", {
     height: "100%",
     margin: "0 auto",
     display: "flex",
-    alignItems: "center",
-    backgroundColor: "#ce1919"
+    alignItems: "center"
   };
 });
 
