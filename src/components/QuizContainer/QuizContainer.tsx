@@ -24,7 +24,8 @@ const bottomToUp = keyframes`
   }
 `;
 
-interface QuizProps {
+interface QuizContainerProps {
+  children: React.ReactElement;
   onCloseAfter: () => void;
   onCloseBefore: () => void;
 }
@@ -41,8 +42,8 @@ const Container = styled("div")<{ unmount: boolean }>(({ unmount }) => {
   };
 });
 
-const Quiz = (props: QuizProps) => {
-  const { onCloseAfter, onCloseBefore } = props;
+const QuizContainer = (props: QuizContainerProps) => {
+  const { children, onCloseAfter, onCloseBefore } = props;
   const [unmount, setUnmount] = useState(false);
 
   const body = document.querySelector("body");
@@ -69,10 +70,10 @@ const Quiz = (props: QuizProps) => {
 
   return createPortal(
     <Container unmount={unmount} onClick={onClick}>
-      Quiz?
+      {children}
     </Container>,
     body
   );
 };
 
-export default Quiz;
+export default QuizContainer;

@@ -11,8 +11,9 @@ interface DescriptionProps {
   isImageRight?: boolean;
   alt: string;
   buttonText?: string;
-  fade: boolean;
-  onFade: () => void;
+  category: string;
+  selectedCagtegory: string;
+  onSelectedCategory: (quizCategory: string) => void;
 }
 
 const fadeInLeft = keyframes` 
@@ -143,14 +144,15 @@ const Description = (props: DescriptionProps) => {
     isImageRight = true,
     alt,
     buttonText,
-    fade,
-    onFade
+    category,
+    selectedCagtegory,
+    onSelectedCategory
   } = props;
 
   const order = isImageRight ? 0 : 1;
 
   return (
-    <Container fade={fade} order={order}>
+    <Container fade={!!selectedCagtegory} order={order}>
       <Warp>
         <DescriptionWrap order={order}>
           <TextWrap>
@@ -164,7 +166,10 @@ const Description = (props: DescriptionProps) => {
             </DescriptionTextWrap>
           </TextWrap>
           {buttonText && (
-            <GoToButton color="#afbbc5" onClick={onFade}>
+            <GoToButton
+              color="#afbbc5"
+              onClick={() => onSelectedCategory(category)}
+            >
               {buttonText}
             </GoToButton>
           )}

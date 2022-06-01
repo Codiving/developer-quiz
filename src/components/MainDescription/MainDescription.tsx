@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import React, { useCallback, useEffect, useState } from "react";
-import Quiz from "../Quiz";
+import QuizContainer from "../QuizContainer";
 import { Description } from "./components";
+import { QUIZ_CATEGORY } from "./types";
 
 const Container = styled("section", {
   label: "MainDescription"
@@ -13,25 +14,32 @@ const Container = styled("section", {
 
 const MainDescription = () => {
   const [open, setOpen] = useState(false);
-  const [fade, setFade] = useState(false);
+  const [selectedCagtegory, selectedCategory] = useState("");
 
-  const onFade = useCallback(() => setFade(prev => !prev), []);
+  const onSelectedCategory = useCallback(
+    (quizCategory: string) => selectedCategory(quizCategory),
+    []
+  );
 
-  const onFalseFade = useCallback(() => setFade(false), []);
+  const onCancelCategory = useCallback(() => selectedCategory(""), []);
 
   const onClose = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
-    if (!fade) return;
+    if (!selectedCagtegory) return;
 
     setTimeout(() => {
       setOpen(true);
     }, 500);
-  }, [fade]);
+  }, [selectedCagtegory]);
 
   return (
     <>
-      {open && <Quiz onCloseBefore={onFalseFade} onCloseAfter={onClose} />}
+      {open && (
+        <QuizContainer onCloseBefore={onCancelCategory} onCloseAfter={onClose}>
+          <div>{selectedCagtegory}</div>
+        </QuizContainer>
+      )}
       <Container>
         <Description
           title="스피드 객관식 퀴즈 !"
@@ -42,8 +50,9 @@ const MainDescription = () => {
           image="https://assets.awwwards.com/awards/media/cache/thumb_417_299/submissions/2022/05/6284ca3a3785e878211698.jpg"
           alt="이미지"
           buttonText="퀴즈 풀어보기"
-          fade={fade}
-          onFade={onFade}
+          category={QUIZ_CATEGORY[0]}
+          selectedCagtegory={selectedCagtegory}
+          onSelectedCategory={onSelectedCategory}
         />
         <Description
           title="가상 면접"
@@ -55,8 +64,9 @@ const MainDescription = () => {
           alt="이미지"
           isImageRight={false}
           buttonText="가상 면접보기"
-          fade={fade}
-          onFade={onFade}
+          category={QUIZ_CATEGORY[1]}
+          selectedCagtegory={selectedCagtegory}
+          onSelectedCategory={onSelectedCategory}
         />
       </Container>
     </>
