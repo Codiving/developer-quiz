@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import Typography from "src/components/Typography";
-import { IoClose } from "react-icons/io5";
-import Chip from "src/components/Chip";
-import { SpeedQuizCategory, SPEED_QUIZ_CATEGORY_DATA } from "../../common";
+import { SpeedQuizGeneratorProps } from "../../types";
+import { SpeedQuizCateogory } from "./components";
 
 const Container = styled("div", {
   label: "SpeedQuizGenerator"
@@ -42,7 +41,7 @@ const CategorySubtitle = styled(Typography, {
   };
 });
 
-const SpeedQuizGenerator = () => {
+const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
   return (
     <Container>
       <MainTitle component="h2">Speed Quiz</MainTitle>
@@ -52,22 +51,7 @@ const SpeedQuizGenerator = () => {
           Quiz 풀고 싶은 카테고리를 선택하세요. (중복 가능)
         </CategorySubtitle>
       </div>
-      <div>
-        {Object.entries(SPEED_QUIZ_CATEGORY_DATA).map(item => {
-          const [key, { color, iconStyle, startIcon }] = item;
-          const category = key as SpeedQuizCategory;
-          return (
-            <Chip
-              key={category}
-              startIcon={startIcon({ style: iconStyle })}
-              color={color}
-              onClick={() => {}}
-            >
-              {category}
-            </Chip>
-          );
-        })}
-      </div>
+      <SpeedQuizCateogory {...props} />
     </Container>
   );
 };
