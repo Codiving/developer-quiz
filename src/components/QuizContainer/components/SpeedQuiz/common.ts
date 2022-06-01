@@ -42,7 +42,7 @@ export const SPEED_QUIZ_CATEGORY = {
 export type SpeedQuizCategory =
   typeof SPEED_QUIZ_CATEGORY[keyof typeof SPEED_QUIZ_CATEGORY];
 
-const commonIconStyle = {
+export const commonIconStyle = {
   width: 24,
   height: 24
 };
