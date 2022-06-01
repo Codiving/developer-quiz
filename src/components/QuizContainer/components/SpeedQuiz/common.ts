@@ -66,7 +66,6 @@ export const SPEED_QUIZ_CATEGORY_DATA = {
       iconColor: "#ff9800",
       ...commonIconStyle
     },
-
     startIcon: DiJavascript
   },
   [SPEED_QUIZ_CATEGORY.TypeScript]: {
@@ -83,7 +82,6 @@ export const SPEED_QUIZ_CATEGORY_DATA = {
       iconColor: "#03a9f4",
       ...commonIconStyle
     },
-
     startIcon: FaReact
   }
 };
