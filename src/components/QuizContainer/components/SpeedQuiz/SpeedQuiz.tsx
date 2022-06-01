@@ -8,7 +8,7 @@ const Container = styled("div", { label: "SpeedQuiz" })(() => {
   return {
     height: "100%",
     display: "grid",
-    gridTemplateColumns: "1fr 1fr"
+    gridTemplateColumns: "minmax(480px, 0.6fr) 1fr"
   };
 });
 
