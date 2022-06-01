@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useCallback, useState } from "react";
 import { SpeedQuizCategory } from "./common";
-import { SpeedQuizGenerator, SpeedQuizList } from "./components";
+import { SpeedQuizGeneratorContainer, SpeedQuizList } from "./components";
 
 const Container = styled("div", { label: "SpeedQuiz" })(() => {
   return {
@@ -35,7 +35,7 @@ const SpeedQuiz = () => {
 
   return (
     <Container>
-      <SpeedQuizGenerator
+      <SpeedQuizGeneratorContainer
         onChangeOnlyBookmarked={onChangeOnlyBookmarked}
         categories={categories}
         onChangeCategories={onChangeCategories}

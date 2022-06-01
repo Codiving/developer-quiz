@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import Typography from "src/components/Typography";
-import { SpeedQuizGeneratorProps } from "../../types";
+import { SpeedQuizGeneratorContainerProps } from "../../types";
 import { SpeedQuizCateogory } from "./components";
 
 const Container = styled("div", {
-  label: "SpeedQuizGenerator"
+  label: "SpeedQuizGeneratorContainer"
 })(() => {
   return {
     backgroundColor: "#ffe579",
@@ -49,7 +49,9 @@ const CategorySubtitle = styled(Typography, {
   };
 });
 
-const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
+const SpeedQuizGeneratorContainer = (
+  props: SpeedQuizGeneratorContainerProps
+) => {
   return (
     <Container>
       <MainTitle component="h2">Speed Quiz</MainTitle>
@@ -60,8 +62,13 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
         </CategorySubtitle>
       </Description>
       <SpeedQuizCateogory {...props} />
+      <div>
+        <div>bookmarkd 문제만 풀기</div>
+        <div>문제 개서 선택</div>
+        <div>문제 추가 설명</div>
+      </div>
     </Container>
   );
 };
 
-export default SpeedQuizGenerator;
+export default SpeedQuizGeneratorContainer;

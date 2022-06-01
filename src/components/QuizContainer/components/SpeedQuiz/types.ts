@@ -1,6 +1,6 @@
 import { SpeedQuizCategory } from "./common";
 
-export interface SpeedQuizGeneratorProps {
+export interface SpeedQuizGeneratorContainerProps {
   onChangeOnlyBookmarked: () => void;
   categories: SpeedQuizCategory[];
   onChangeCategories: (category: SpeedQuizCategory) => void;
