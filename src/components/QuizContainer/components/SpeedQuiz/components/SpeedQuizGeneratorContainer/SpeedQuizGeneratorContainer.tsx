@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Typography from "src/components/Typography";
 import { SpeedQuizGeneratorContainerProps } from "../../types";
-import { SpeedQuizCateogory } from "./components";
+import { SpeedQuizCateogory, SpeedQuizGenerator } from "./components";
 
 const Container = styled("div", {
   label: "SpeedQuizGeneratorContainer"
@@ -62,11 +62,7 @@ const SpeedQuizGeneratorContainer = (
         </CategorySubtitle>
       </Description>
       <SpeedQuizCateogory {...props} />
-      <div>
-        <div>bookmarkd 문제만 풀기</div>
-        <div>문제 개서 선택</div>
-        <div>문제 추가 설명</div>
-      </div>
+      <SpeedQuizGenerator {...props} />
     </Container>
   );
 };

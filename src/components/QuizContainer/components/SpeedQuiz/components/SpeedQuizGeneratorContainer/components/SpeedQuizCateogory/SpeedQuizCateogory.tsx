@@ -44,8 +44,6 @@ const SpeedQuizCateogory = (props: SpeedQuizCateogoryProps) => {
     onResetCategories
   } = props;
 
-  console.log("categories", categories);
-
   return (
     <Container>
       {Object.entries(SPEED_QUIZ_CATEGORY_DATA).map(item => {
