@@ -32,7 +32,7 @@ export const prefix = [
   "Z"
 ];
 
-export const SPEED_QUIZ_COUNT = [20, 25, 30, 35, 40] as const;
+export const SPEED_QUIZ_COUNT = [3, 20, 25, 30, 35, 40] as const;
 
 export type SpeedQuizCount = typeof SPEED_QUIZ_COUNT[number];
 

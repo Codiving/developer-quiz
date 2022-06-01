@@ -1,4 +1,5 @@
 import { SpeedQuizCategory, SpeedQuizCount } from "./common";
+import { SpeedQuizData } from "./quizData";
 
 export interface SpeedQuizGeneratorContainerProps {
   onlyBookmarked: boolean;
@@ -8,6 +9,7 @@ export interface SpeedQuizGeneratorContainerProps {
   count: SpeedQuizCount;
   onChangeCount: (count: SpeedQuizCount) => void;
   onResetCategories: () => void;
+  onChangeQuizList: (quizList: SpeedQuizData[]) => void;
 }
 
 export interface SpeedQuizCateogoryProps {
@@ -18,6 +20,7 @@ export interface SpeedQuizCateogoryProps {
   count: SpeedQuizCount;
   onChangeCount: (count: SpeedQuizCount) => void;
   onResetCategories: () => void;
+  onChangeQuizList: (quizList: SpeedQuizData[]) => void;
 }
 
 export interface SpeedQuizGeneratorProps {
@@ -28,4 +31,5 @@ export interface SpeedQuizGeneratorProps {
   count: SpeedQuizCount;
   onChangeCount: (count: SpeedQuizCount) => void;
   onResetCategories: () => void;
+  onChangeQuizList: (quizList: SpeedQuizData[]) => void;
 }
