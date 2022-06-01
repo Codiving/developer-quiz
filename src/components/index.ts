@@ -1,4 +1,5 @@
 export { default as Button } from "./Button";
+export { default as ButtonGroup } from "./ButtonGroup";
 export { default as Chip } from "./Chip";
 export { default as MainSlider } from "./MainSlider";
 export { default as QuizContainer } from "./QuizContainer";
