@@ -14,6 +14,7 @@ interface DescriptionProps {
   category: string;
   selectedCagtegory: string;
   onSelectedCategory: (quizCategory: string) => void;
+  width?: string;
 }
 
 const fadeInLeft = keyframes` 
@@ -104,15 +105,19 @@ const DescriptionText = styled(Typography, {
   return { marginBottom: 10, fontSize: 20, fontFamily: "Tium" };
 });
 
-const ImageWrap = styled("div")(() => {
+const ImageWrap = styled("div", {
+  label: "ImageWrap"
+})(() => {
   return {
-    flex: 1
+    flex: 1,
+    display: "flex",
+    justifyContent: "center"
   };
 });
 
-const Image = styled("img")(() => {
+const Image = styled("img")<{ width: string }>(({ width }) => {
   return {
-    width: "100%",
+    width: width,
     height: "100%",
     padding: "2rem",
     borderRadius: 24,
@@ -146,7 +151,8 @@ const Description = (props: DescriptionProps) => {
     buttonText,
     category,
     selectedCagtegory,
-    onSelectedCategory
+    onSelectedCategory,
+    width = "100%"
   } = props;
 
   const order = isImageRight ? 0 : 1;
@@ -175,7 +181,7 @@ const Description = (props: DescriptionProps) => {
           )}
         </DescriptionWrap>
         <ImageWrap>
-          <Image src={image} alt={alt} />
+          <Image src={image} alt={alt} width={width} />
         </ImageWrap>
       </Warp>
     </Container>

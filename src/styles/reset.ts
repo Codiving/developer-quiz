@@ -169,7 +169,6 @@ const resetCss = css`
     position: relative;
     display: grid;
     grid-template-rows: 100px 1fr 30px;
-    background-color: #efefef;
   }
 
   .fixed-height {
