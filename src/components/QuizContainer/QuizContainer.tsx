@@ -31,9 +31,11 @@ interface QuizContainerProps {
   onCloseBefore: () => void;
 }
 
-const Container = styled("div")<{ unmount: boolean }>(({ unmount }) => {
+const Container = styled("section", {
+  label: "QuizContainer"
+})<{ unmount: boolean }>(({ unmount }) => {
   return {
-    position: "fixed",
+    position: "absolute",
     width: "100%",
     height: "100%",
     left: 0,
