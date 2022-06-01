@@ -19,7 +19,7 @@ const MainTitle = styled(Typography, {
     fontWeight: 600,
     fontSize: 40,
     marginRight: 10,
-    marginBottom: "5rem"
+    marginBottom: "8rem"
   };
 });
 

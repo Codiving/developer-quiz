@@ -112,7 +112,7 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
         </GeneratorButton>
       </QuizCountSelector>
       <Description>
-        <Typography>문제 개수는 카테고리 별 n 등분됩니다.</Typography>
+        <Typography>* 문제 개수는 카테고리 별 n 등분됩니다.</Typography>
         <Typography>부족한 경우 다른 카테고리 개수로 채워집니다.</Typography>
       </Description>
     </Container>

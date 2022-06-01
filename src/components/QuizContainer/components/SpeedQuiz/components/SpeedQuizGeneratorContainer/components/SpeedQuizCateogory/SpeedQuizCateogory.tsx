@@ -16,7 +16,7 @@ const Container = styled("div", {
     display: "flex",
     flexWrap: "wrap",
     gap: "1rem",
-    marginBottom: "2rem"
+    marginBottom: "6rem"
   };
 });
 
