@@ -11,7 +11,7 @@ const data = [
     image: "/quiz.gif",
     alt: "이미지",
     buttonText: "퀴즈 풀어보기",
-    width: "80%"
+    width: "70%"
   },
   {
     id: QUIZ_CATEGORY[1],

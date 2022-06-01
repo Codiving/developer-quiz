@@ -15,6 +15,7 @@ interface DescriptionProps {
   selectedCagtegory: string;
   onSelectedCategory: (quizCategory: string) => void;
   width?: string;
+  padding?: string;
 }
 
 const fadeInLeft = keyframes` 
@@ -80,7 +81,7 @@ const TextWrap = styled("div", {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: "5rem"
+    gap: "2rem"
   };
 });
 
@@ -115,15 +116,17 @@ const ImageWrap = styled("div", {
   };
 });
 
-const Image = styled("img")<{ width: string }>(({ width }) => {
-  return {
-    width: width,
-    height: "100%",
-    padding: "2rem",
-    borderRadius: 24,
-    "&:hover": {}
-  };
-});
+const Image = styled("img")<{ width: string; padding: string }>(
+  ({ width, padding }) => {
+    return {
+      width: width,
+      height: "100%",
+      padding: padding,
+      borderRadius: 24,
+      "&:hover": {}
+    };
+  }
+);
 
 const GoToButton = styled(Button, {
   label: "GoToButton"
@@ -152,7 +155,8 @@ const Description = (props: DescriptionProps) => {
     category,
     selectedCagtegory,
     onSelectedCategory,
-    width = "100%"
+    width = "80%",
+    padding = "3rem"
   } = props;
 
   const order = isImageRight ? 0 : 1;
@@ -181,7 +185,7 @@ const Description = (props: DescriptionProps) => {
           )}
         </DescriptionWrap>
         <ImageWrap>
-          <Image src={image} alt={alt} width={width} />
+          <Image src={image} alt={alt} width={width} padding={padding} />
         </ImageWrap>
       </Warp>
     </Container>
