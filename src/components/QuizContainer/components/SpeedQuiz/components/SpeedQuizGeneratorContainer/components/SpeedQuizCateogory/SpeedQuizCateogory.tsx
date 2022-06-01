@@ -15,7 +15,8 @@ const Container = styled("div", {
   return {
     display: "flex",
     flexWrap: "wrap",
-    gap: "1rem"
+    gap: "1rem",
+    marginBottom: "2rem"
   };
 });
 
