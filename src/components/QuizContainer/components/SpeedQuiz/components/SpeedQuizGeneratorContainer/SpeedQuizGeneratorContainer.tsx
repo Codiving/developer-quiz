@@ -7,7 +7,7 @@ const Container = styled("div", {
   label: "SpeedQuizGeneratorContainer"
 })(() => {
   return {
-    backgroundColor: "#ffe579",
+    backgroundColor: "#FFE579",
     padding: "4rem 2rem"
   };
 });

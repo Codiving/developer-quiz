@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useCallback, useState } from "react";
 import { SpeedQuizCategory, SpeedQuizCount, SPEED_QUIZ_COUNT } from "./common";
 import { SpeedQuizGeneratorContainer, SpeedQuizList } from "./components";
+import { SpeedQuizData } from "./quizData";
 
 const Container = styled("div", { label: "SpeedQuiz" })(() => {
   return {
@@ -14,8 +15,9 @@ const Container = styled("div", { label: "SpeedQuiz" })(() => {
 const SpeedQuiz = () => {
   const [onlyBookmarked, setOnlyBookmarked] = useState(false);
   const [categories, setCategories] = useState<SpeedQuizCategory[]>([]);
-  const [answers, setAnswers] = useState([]);
   const [count, setCount] = useState<SpeedQuizCount>(SPEED_QUIZ_COUNT[0]);
+  const [quizList, setQuizList] = useState<SpeedQuizData[]>([]);
+  const [answers, setAnswers] = useState([]);
 
   const onChangeOnlyBookmarked = useCallback(
     () => setOnlyBookmarked(prev => !prev),
@@ -38,6 +40,11 @@ const SpeedQuiz = () => {
     []
   );
 
+  const onChangeQuizList = useCallback(
+    (newQuizList: SpeedQuizData[]) => setQuizList(newQuizList),
+    []
+  );
+
   return (
     <Container>
       <SpeedQuizGeneratorContainer
@@ -48,6 +55,7 @@ const SpeedQuiz = () => {
         count={count}
         onChangeCount={onChangeCount}
         onResetCategories={onResetCategories}
+        onChangeQuizList={onChangeQuizList}
       />
       <SpeedQuizList />
     </Container>

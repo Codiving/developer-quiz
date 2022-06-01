@@ -77,8 +77,10 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
   const {
     onlyBookmarked,
     onChangeOnlyBookmarked,
-    count: _count,
-    onChangeCount
+    categories,
+    count: quizCount,
+    onChangeCount,
+    onChangeQuizList
   } = props;
 
   return (
@@ -100,14 +102,20 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
           {SPEED_QUIZ_COUNT.map(count => (
             <Button
               key={count}
-              selected={count === _count}
+              selected={count === quizCount}
               onClick={() => onChangeCount(count)}
             >
               {count}
             </Button>
           ))}
         </ButtonGroup>
-        <GeneratorButton color="#000000" onClick={() => {}}>
+        <GeneratorButton
+          color="#000000"
+          onClick={() => {
+            console.log("# count", quizCount);
+            console.log("# categories", categories);
+          }}
+        >
           문제 생성
         </GeneratorButton>
       </QuizCountSelector>
