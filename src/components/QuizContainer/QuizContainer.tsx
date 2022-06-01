@@ -1,6 +1,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useCallback, useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
 import { createPortal } from "react-dom";
 
 const topToBottom = keyframes` 
@@ -25,7 +26,7 @@ const bottomToUp = keyframes`
 `;
 
 interface QuizContainerProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
   onCloseAfter: () => void;
   onCloseBefore: () => void;
 }
@@ -39,6 +40,23 @@ const Container = styled("div")<{ unmount: boolean }>(({ unmount }) => {
     top: 0,
     backgroundColor: "gray",
     animation: `${unmount ? bottomToUp : topToBottom} 0.5s`
+  };
+});
+
+const CloseIcon = styled(IoClose, {
+  label: "QuizContainerCloseIcon"
+})(() => {
+  return {
+    position: "fixed",
+    top: 10,
+    right: 10,
+    width: 30,
+    height: 30,
+    cursor: "pointer",
+    transition: "transform .2s",
+    "&:hover": {
+      transform: "scale(1.3) rotate(360deg)"
+    }
   };
 });
 
@@ -69,7 +87,8 @@ const QuizContainer = (props: QuizContainerProps) => {
   if (!body) return <>Bug</>;
 
   return createPortal(
-    <Container unmount={unmount} onClick={onClick}>
+    <Container unmount={unmount}>
+      <CloseIcon onClick={onClick} />
       {children}
     </Container>,
     body
