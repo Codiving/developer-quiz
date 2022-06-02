@@ -9,7 +9,12 @@ import { SpeedQuizGeneratorProps } from "../../../../types";
 const Container = styled("div", {
   label: "SpeedQuizGenerator"
 })(() => {
-  return {};
+  return {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  };
 });
 
 const QuizBookmarkCheckConatiner = styled("div", {

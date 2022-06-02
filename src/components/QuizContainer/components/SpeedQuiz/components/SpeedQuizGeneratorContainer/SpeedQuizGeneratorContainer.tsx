@@ -11,6 +11,10 @@ const Container = styled("div", {
     : { opacity: 1, zIndex: 1 };
 
   return {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#fff",
     padding: "4rem 2rem",
     position: "absolute",
@@ -28,9 +32,8 @@ const MainTitle = styled(Typography, {
 })(() => {
   return {
     fontWeight: 600,
-    fontSize: 40,
-    marginRight: 10,
-    marginBottom: "8rem"
+    fontSize: 52,
+    marginBottom: "5rem"
   };
 });
 
@@ -38,6 +41,7 @@ const Description = styled("div", {
   label: "Description"
 })(() => {
   return {
+    textAlign: "center",
     marginBottom: "2rem"
   };
 });
