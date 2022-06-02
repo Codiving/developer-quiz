@@ -5,10 +5,21 @@ import { SpeedQuizCateogory, SpeedQuizGenerator } from "./components";
 
 const Container = styled("div", {
   label: "SpeedQuizGeneratorContainer"
-})(() => {
+})<{ isQuizPage: boolean }>(({ isQuizPage }) => {
+  const css = isQuizPage
+    ? { opacity: 0, zIndex: 0 }
+    : { opacity: 1, zIndex: 1 };
+
   return {
     backgroundColor: "#fff",
-    padding: "4rem 2rem"
+    padding: "4rem 2rem",
+    position: "absolute",
+    width: "100%",
+    top: 0,
+    left: 0,
+    height: "100%",
+    transition: "all 0.5s",
+    ...css
   };
 });
 
@@ -52,8 +63,9 @@ const CategorySubtitle = styled(Typography, {
 const SpeedQuizGeneratorContainer = (
   props: SpeedQuizGeneratorContainerProps
 ) => {
+  const { isQuizPage } = props;
   return (
-    <Container>
+    <Container isQuizPage={isQuizPage}>
       <MainTitle component="h2">Speed Quiz</MainTitle>
       <Description>
         <CategoryTitle component="h3">Quiz Categories</CategoryTitle>

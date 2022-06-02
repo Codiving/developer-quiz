@@ -10,6 +10,8 @@ export interface SpeedQuizGeneratorContainerProps {
   onChangeCount: (count: SpeedQuizCount) => void;
   onResetCategories: () => void;
   onChangeQuizList: (quizList: SpeedQuizData[]) => void;
+  isQuizPage: boolean;
+  onChangeIsQuizPage: () => void;
 }
 
 export interface SpeedQuizCateogoryProps {
@@ -32,4 +34,10 @@ export interface SpeedQuizGeneratorProps {
   onChangeCount: (count: SpeedQuizCount) => void;
   onResetCategories: () => void;
   onChangeQuizList: (quizList: SpeedQuizData[]) => void;
+  onChangeIsQuizPage: () => void;
+}
+
+export interface SpeedQuizListProps {
+  isQuizPage: boolean;
+  onChangeIsQuizPage: () => void;
 }

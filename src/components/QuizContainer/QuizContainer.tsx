@@ -56,6 +56,7 @@ const CloseIcon = styled(IoClose, {
     height: 30,
     cursor: "pointer",
     transition: "transform .2s",
+    zIndex: 2,
     "&:hover": {
       transform: "scale(1.3) rotate(360deg)"
     }

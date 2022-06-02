@@ -80,7 +80,8 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
     categories,
     count: quizCount,
     onChangeCount,
-    onChangeQuizList
+    onChangeQuizList,
+    onChangeIsQuizPage
   } = props;
 
   return (
@@ -114,6 +115,7 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
           onClick={() => {
             console.log("# count", quizCount);
             console.log("# categories", categories);
+            onChangeIsQuizPage();
           }}
         >
           문제 생성

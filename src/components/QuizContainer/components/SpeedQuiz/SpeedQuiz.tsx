@@ -7,8 +7,7 @@ import { SpeedQuizData } from "./quizData";
 const Container = styled("div", { label: "SpeedQuiz" })(() => {
   return {
     height: "100%",
-    display: "grid",
-    gridTemplateColumns: "minmax(480px, 0.6fr) 1fr"
+    position: "relative"
   };
 });
 
@@ -18,6 +17,7 @@ const SpeedQuiz = () => {
   const [count, setCount] = useState<SpeedQuizCount>(SPEED_QUIZ_COUNT[0]);
   const [quizList, setQuizList] = useState<SpeedQuizData[]>([]);
   const [answers, setAnswers] = useState([]);
+  const [isQuizPage, setIsQuizPage] = useState(false);
 
   const onChangeOnlyBookmarked = useCallback(
     () => setOnlyBookmarked(prev => !prev),
@@ -45,6 +45,11 @@ const SpeedQuiz = () => {
     []
   );
 
+  const onChangeIsQuizPage = useCallback(
+    () => setIsQuizPage(prev => !prev),
+    []
+  );
+
   return (
     <Container>
       <SpeedQuizGeneratorContainer
@@ -56,8 +61,13 @@ const SpeedQuiz = () => {
         onChangeCount={onChangeCount}
         onResetCategories={onResetCategories}
         onChangeQuizList={onChangeQuizList}
+        isQuizPage={isQuizPage}
+        onChangeIsQuizPage={onChangeIsQuizPage}
       />
-      <SpeedQuizList />
+      <SpeedQuizList
+        isQuizPage={isQuizPage}
+        onChangeIsQuizPage={onChangeIsQuizPage}
+      />
     </Container>
   );
 };
