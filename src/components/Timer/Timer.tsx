@@ -73,7 +73,7 @@ const Timer = (props: TimerProps) => {
     if (nextCount) setCount(nextCount);
     else {
       setCount(nextCount);
-      setTimeout(() => onChange(), interval);
+      setTimeout(onChange, interval);
     }
   };
 
