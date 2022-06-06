@@ -6,6 +6,7 @@ import { keyframes } from "@emotion/react";
 import Typography from "../Typography";
 
 interface TimerProps {
+  className?: string;
   value: number;
   onChange: () => void;
   interval?: number;
@@ -63,7 +64,13 @@ const Container = styled("div", {
 });
 
 const Timer = (props: TimerProps) => {
-  const { value, onChange, interval = 1000, shakingCount = 0 } = props;
+  const {
+    className,
+    value,
+    onChange,
+    interval = 1000,
+    shakingCount = 0
+  } = props;
 
   const [count, setCount] = useState(value);
 
@@ -84,7 +91,7 @@ const Timer = (props: TimerProps) => {
   }, [value]);
 
   return (
-    <Container shakingCount={shakingCount} count={count}>
+    <Container className={className} shakingCount={shakingCount} count={count}>
       <RiTimerFlashLine style={{ width: 30, height: 30 }} />
       <Typography fontSize={18}>{count}</Typography>
     </Container>
