@@ -7,7 +7,7 @@ interface ChipProps {
   children: React.ReactNode;
   bgColor?: string;
   color?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Container = styled("div", {
@@ -43,7 +43,7 @@ const Chip = (props: ChipProps) => {
     children,
     bgColor = "",
     color = "",
-    onClick
+    onClick = () => {}
   } = props;
   return (
     <Container
