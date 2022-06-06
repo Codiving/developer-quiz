@@ -16,3 +16,18 @@ export const hexToRgbWithA = (hex: string, a: number) => {
   }
   throw new Error("Bad Hex");
 };
+
+export const getRandom = (max: number, min: number = 0, count: number = 1) => {
+  const result: number[] = [];
+
+  for (let i = 0; i < count; ) {
+    const random = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    if (!result.includes(random)) {
+      i++;
+      result.push(random);
+    }
+  }
+
+  return result;
+};
