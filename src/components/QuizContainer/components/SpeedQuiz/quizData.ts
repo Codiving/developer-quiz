@@ -292,3 +292,10 @@ export const React: SpeedQuizData[] = [
     timer: 5
   }
 ];
+
+export const TotalQuiz = [
+  ...Web,
+  ...JavaScript,
+  ...TypeScript,
+  ...React
+] as SpeedQuizData[];

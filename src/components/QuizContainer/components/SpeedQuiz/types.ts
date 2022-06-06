@@ -40,4 +40,5 @@ export interface SpeedQuizGeneratorProps {
 export interface SpeedQuizListProps {
   isQuizPage: boolean;
   onChangeIsQuizPage: () => void;
+  quizList: SpeedQuizData[];
 }

@@ -67,6 +67,7 @@ const SpeedQuiz = () => {
       <SpeedQuizList
         isQuizPage={isQuizPage}
         onChangeIsQuizPage={onChangeIsQuizPage}
+        quizList={quizList}
       />
     </Container>
   );
