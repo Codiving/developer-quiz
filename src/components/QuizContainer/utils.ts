@@ -1,13 +1,15 @@
-type QuizCountArray = {
-  text: string;
+import { SpeedQuizCategory } from "./components/SpeedQuiz/common";
+
+export type QuizCount = {
+  category: SpeedQuizCategory;
   count: number;
 };
 
 const getQuizCountPerCategory = (
-  quizArray: QuizCountArray[],
+  quizArray: QuizCount[],
   _count: number,
   index: number = 0
-): QuizCountArray[] => {
+): QuizCount[] => {
   const newArray = quizArray.map(quiz => ({ ...quiz }));
   const tmpCount = _count / (quizArray.length - index);
   const count = Math.floor(tmpCount);
