@@ -31,3 +31,5 @@ export const getRandom = (max: number, min: number = 0, count: number = 1) => {
 
   return result;
 };
+
+export const shuffle = () => Math.random() - 0.5;
