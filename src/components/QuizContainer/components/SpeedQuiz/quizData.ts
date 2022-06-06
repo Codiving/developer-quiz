@@ -109,7 +109,7 @@ const spliceArr = arr.splice(0, 2);
     
 console.log(arr);
 `,
-    timer: 5
+    timer: 3
   },
   {
     id: uuid(),
@@ -144,7 +144,7 @@ console.log(spliceArr);
     
     console.log(3);
 `,
-    timer: 5
+    timer: 7
   },
   {
     id: uuid(),
@@ -160,7 +160,7 @@ const pushedArr = arr.push(4);
 
 console.log(pushedArr);
 `,
-    timer: 5
+    timer: 10
   },
   {
     id: uuid(),
@@ -176,7 +176,7 @@ arr.push(4);
 
 console.log(arr);
 `,
-    timer: 5
+    timer: 8
   },
   {
     id: uuid(),
@@ -197,7 +197,7 @@ console.log(arr);
     
     console.log(a);
 `,
-    timer: 5
+    timer: 7
   },
   {
     id: uuid(),
@@ -223,7 +223,7 @@ console.log(arr);
     let b = 2;
     console.log(b);
 `,
-    timer: 5
+    timer: 15
   },
   {
     id: uuid(),
@@ -245,7 +245,7 @@ console.log(arr);
       "JavaScript Temporal Dead Zone"
     ],
     messages: [],
-    timer: 5
+    timer: 12
   },
   {
     id: uuid(),
