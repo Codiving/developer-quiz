@@ -14,12 +14,10 @@ interface SpeedQuizItemProps extends SpeedQuizData {
 
 const Container = styled("div", {
   label: "SpeedQuizItem"
-})(() => {
+})<{ code?: boolean }>(({ code }) => {
   return {
-    width: "50vw",
-    padding: "2rem 1.5rem",
-    border: "1px solid orange",
-    borderRadius: 24
+    width: code ? "" : "35vw",
+    border: "1px solid #eee"
   };
 });
 
@@ -27,7 +25,9 @@ const UITimer = styled(Timer, {
   label: "SpeedQuizItemTimer"
 })(() => {
   return {
-    marginBottom: 20
+    width: "100%",
+    borderBottom: "1px solid #eee",
+    padding: 10
   };
 });
 
@@ -39,7 +39,8 @@ const CategoryContainer = styled("div", {
     alignItems: "center",
     justifyContent: "space-between",
     fontSize: 14,
-    marginBottom: 20
+    borderBottom: "1px solid #eee",
+    padding: 10
   };
 });
 
@@ -62,7 +63,8 @@ const QuestionContainer = styled("div", {
   label: "QuestionContainer"
 })(() => {
   return {
-    marginBottom: 20,
+    borderBottom: "1px solid #eee",
+    padding: 10,
     "& *": {
       fontFamily: "SUIT-Medium"
     }
@@ -75,7 +77,6 @@ const Question = styled(Typography, { label: "Question" })<{ index: number }>(
       return {
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 10,
         "&::before": {
           content: '"Q. "'
         }
@@ -86,15 +87,27 @@ const Question = styled(Typography, { label: "Question" })<{ index: number }>(
   }
 );
 
-// beforerk wkf dksehla
+const CandidateContainer = styled("div", {
+  label: "CandidateContainer"
+})(() => {
+  return {
+    "& *": {
+      fontFamily: "SUIT-Medium"
+    }
+  };
+});
+
 const Candidate = styled(Typography, { label: "Candidate" })<{ index: number }>(
   ({ index }) => {
     const before = prefix[index];
     return {
+      cursor: "pointer",
       fontSize: 18,
-      margin: "10px 0",
+      marginBottom: 2,
       "&::before": {
-        // content: "`${before}`."
+        display: "inline-block",
+        content: `"${before}. "`,
+        width: 25
       }
     };
   }
@@ -105,7 +118,6 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
     id,
     type,
     question,
-    contents = [],
     candidates,
     answer,
     keywords,
@@ -126,7 +138,7 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
   }, [timer]);
 
   return (
-    <Container>
+    <Container code={!!code}>
       <UITimer
         value={1000000}
         onChange={() => {
@@ -153,17 +165,12 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
           );
         })}
       </QuestionContainer>
-      <div>
-        {contents.map((text, index) => {
-          return (
-            <Typography component="p" key={text}>
-              {text}
-            </Typography>
-          );
-        })}
-      </div>
-      <div>코드</div>
-      <div>
+      {!!code && (
+        <div style={{ overflow: "hidden" }}>
+          <img src={code.src} alt={question[0]} />
+        </div>
+      )}
+      <CandidateContainer>
         {candidates.map((text, index) => {
           return (
             <Candidate component="p" key={text} index={index}>
@@ -171,7 +178,7 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
             </Candidate>
           );
         })}
-      </div>
+      </CandidateContainer>
       <div>제출</div>
       <button
         onClick={() => {
