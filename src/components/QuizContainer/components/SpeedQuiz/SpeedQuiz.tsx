@@ -64,11 +64,13 @@ const SpeedQuiz = () => {
         isQuizPage={isQuizPage}
         onChangeIsQuizPage={onChangeIsQuizPage}
       />
-      <SpeedQuizList
-        isQuizPage={isQuizPage}
-        onChangeIsQuizPage={onChangeIsQuizPage}
-        quizList={quizList}
-      />
+      {quizList.length && (
+        <SpeedQuizList
+          isQuizPage={isQuizPage}
+          onChangeIsQuizPage={onChangeIsQuizPage}
+          quizList={quizList}
+        />
+      )}
     </Container>
   );
 };

@@ -1,10 +1,32 @@
 import styled from "@emotion/styled";
 import Button from "src/components/Button";
 import ButtonGroup from "src/components/ButtonGroup";
+import {
+  getQuizCountPerCategory,
+  QuizCount
+} from "src/components/QuizContainer/utils";
 import Typography from "src/components/Typography";
-import { hexToRgbWithA } from "src/utils";
+import { getRandom, hexToRgbWithA, shuffle } from "src/utils";
 import { SPEED_QUIZ_COUNT } from "../../../../common";
+import {
+  JavaScript,
+  React,
+  SpeedQuizData,
+  TypeScript,
+  Web
+} from "../../../../quizData";
 import { SpeedQuizGeneratorProps } from "../../../../types";
+
+interface TotalQuizCount extends QuizCount {
+  Data: SpeedQuizData[];
+}
+
+const TotalQuizCount: TotalQuizCount[] = [
+  { category: "React", count: React.length, Data: React },
+  { category: "TypeScript", count: TypeScript.length, Data: TypeScript },
+  { category: "JavaScript", count: JavaScript.length, Data: JavaScript },
+  { category: "Web", count: Web.length, Data: Web }
+];
 
 const Container = styled("div", {
   label: "SpeedQuizGenerator"
@@ -118,9 +140,34 @@ const SpeedQuizGenerator = (props: SpeedQuizGeneratorProps) => {
         <GeneratorButton
           color="#000000"
           onClick={() => {
-            console.log("# count", quizCount);
-            console.log("# categories", categories);
+            const result: SpeedQuizData[] = [];
             onChangeIsQuizPage();
+
+            // 최종 카테고리
+            const target = TotalQuizCount.filter(quizData =>
+              categories.includes(quizData.category)
+            );
+            // 최종 문제 개수
+            const realQuizCount = getQuizCountPerCategory(target, quizCount);
+
+            realQuizCount.forEach(quizData => {
+              const { count, category } = quizData;
+
+              const target = TotalQuizCount.find(
+                el => el.category === category
+              );
+
+              if (!target) return;
+              const { count: totalCount, Data } = target;
+
+              const indexs = getRandom(totalCount - 1, 0, count);
+
+              indexs.forEach(index => {
+                result.push(Data[index]);
+              });
+            });
+
+            onChangeQuizList(result.sort(shuffle));
           }}
         >
           문제 생성

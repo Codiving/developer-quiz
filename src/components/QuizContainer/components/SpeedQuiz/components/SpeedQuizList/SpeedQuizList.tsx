@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import { useMemo, useState } from "react";
 import { SpeedQuizListProps } from "../../types";
+import { SpeedQuizItem } from "./components";
 
 const Container = styled("div", {
   label: "SpeedQuizList"
@@ -9,7 +11,7 @@ const Container = styled("div", {
     : { opacity: 1, zIndex: 1 };
 
   return {
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#fff", //"#F5EEDC",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -24,17 +26,22 @@ const Container = styled("div", {
 });
 
 const SpeedQuizList = (props: SpeedQuizListProps) => {
-  const { isQuizPage, onChangeIsQuizPage } = props;
+  const { isQuizPage, onChangeIsQuizPage, quizList } = props;
+  const [index, setIndex] = useState(0);
+
+  const totalCount = useMemo(() => quizList.length, [quizList.length]);
+
   return (
     <Container isQuizPage={isQuizPage}>
       <button onClick={onChangeIsQuizPage}>asd</button>
-      <div>
-        <div></div>
-        <div>제목</div>
-        <div>코드</div>
-        <div>리스트</div>
-        <div>제출</div>
-      </div>
+      {index < totalCount && (
+        <SpeedQuizItem
+          {...quizList[index]}
+          onChangeIndex={() => setIndex(index + 1)}
+          currentCount={index}
+          totalCount={totalCount}
+        />
+      )}
     </Container>
   );
 };
