@@ -1,5 +1,13 @@
-import { SpeedQuizCategory, SPEED_QUIZ_CATEGORY } from "./common";
+import jsQuiz1 from "public/quiz/js/jsQuiz1.png";
+import jsQuiz2 from "public/quiz/js/jsQuiz2.png";
+import jsQuiz3 from "public/quiz/js/jsQuiz3.png";
+import jsQuiz4 from "public/quiz/js/jsQuiz4.png";
+import jsQuiz5 from "public/quiz/js/jsQuiz5.png";
+import jsQuiz6 from "public/quiz/js/jsQuiz6.png";
+import jsQuiz7 from "public/quiz/js/jsQuiz7.png";
+import jsQuiz8 from "public/quiz/js/jsQuiz8.png";
 import { v4 as uuid } from "uuid";
+import { SpeedQuizCategory, SPEED_QUIZ_CATEGORY } from "./common";
 
 const WEB_KEYWORDS = ["DNS", "Domain Name"] as const;
 
@@ -37,12 +45,11 @@ export interface SpeedQuizData {
   id: string;
   type: SpeedQuizCategory;
   question: string[];
-  contents?: string[];
   candidates: string[];
   answer: string;
   keywords: Keywords[];
   messages: string[];
-  code?: string;
+  code?: any;
   timer?: number;
 }
 
@@ -71,8 +78,15 @@ export const JavaScript: SpeedQuizData[] = [
   {
     id: uuid(),
     type: SPEED_QUIZ_CATEGORY.JavaScript,
-    question: ["JavaScript의 원시 값은 아래와 같습니다."],
-    contents: ["Boolean", "Null", "Undefined", "Number", "String", "Symbol"],
+    question: [
+      "JavaScript의 원시 값은 아래와 같습니다.",
+      "Boolean",
+      "Null",
+      "Undefined",
+      "Number",
+      "String",
+      "Symbol"
+    ],
     candidates: ["O", "X"],
     answer: "X",
     keywords: ["JavaScript Primitive Types", "JavaScript 원시타입"],
@@ -87,12 +101,7 @@ export const JavaScript: SpeedQuizData[] = [
     answer: "123456",
     keywords: ["JavaScript slice"],
     messages: ["slice 함수는 원본을 변형시키지 않습니다."],
-    code: `
-const str = "123456";
-str.slice(0, 2);
-
-console.log(str);
-`,
+    code: { src: jsQuiz2.src },
     timer: 5
   },
   {
@@ -103,12 +112,9 @@ console.log(str);
     answer: "[3, 4, 5]",
     keywords: ["JavaScript splice"],
     messages: ["splice 함수는 원본을 변형시킵니다."],
-    code: `
-const arr = [1, 2, 3, 4, 5];
-const spliceArr = arr.splice(0, 2);
-    
-console.log(arr);
-`,
+    code: {
+      src: jsQuiz3.src
+    },
     timer: 3
   },
   {
@@ -119,12 +125,9 @@ console.log(arr);
     answer: "[3, 4, 5]",
     keywords: ["JavaScript splice"],
     messages: ["새로운 배열을 반환합니다."],
-    code: `
-const arr = [1, 2, 3, 4, 5];
-const spliceArr = arr.splice(0, 2);
-    
-console.log(spliceArr);
-`,
+    code: {
+      src: jsQuiz4.src
+    },
     timer: 5
   },
   {
@@ -135,15 +138,9 @@ console.log(spliceArr);
     answer: "1 3",
     keywords: ["JavaScript IIFE", "JavaScript 즉시실행함수"],
     messages: ["IIFE는 실행을 하지 않으면 생성되고 사라집니다."],
-    code: `
-    console.log(1);
-
-    () => {
-      console.log(2);
-    };
-    
-    console.log(3);
-`,
+    code: {
+      src: jsQuiz5.src
+    },
     timer: 7
   },
   {
@@ -154,12 +151,9 @@ console.log(spliceArr);
     answer: "4",
     keywords: ["JavaScript push"],
     messages: ["push 함수의 동작과 반환 값을 구분 하셔야합니다."],
-    code: `
-const arr = [1, 2, 3];
-const pushedArr = arr.push(4);
-
-console.log(pushedArr);
-`,
+    code: {
+      src: jsQuiz6.src
+    },
     timer: 10
   },
   {
@@ -170,12 +164,7 @@ console.log(pushedArr);
     answer: "[1, 2, 3, 4]",
     keywords: ["JavaScript push"],
     messages: ["push 함수의 동작과 반환 값을 구분 하셔야합니다."],
-    code: `
-const arr = [1, 2, 3];
-arr.push(4);
-
-console.log(arr);
-`,
+    code: { src: jsQuiz7.src },
     timer: 8
   },
   {
@@ -186,17 +175,9 @@ console.log(arr);
     answer: "1 2 1",
     keywords: ["JavaScript let"],
     messages: ["let 변수는 block scope 입니다."],
-    code: `
-    let a = 1;
-    console.log(a);
-    
-    (() => {
-      let a = 2;
-      console.log(a);
-    })();
-    
-    console.log(a);
-`,
+    code: {
+      src: jsQuiz1.src
+    },
     timer: 7
   },
   {
@@ -214,15 +195,9 @@ console.log(arr);
       "JavaScript Temporal Dead Zone"
     ],
     messages: ["let도 호이스팅이 되지만 TDZ에 의해 참조 에러가 발생합니다."],
-    code: `
-    console.log(a);
-    var a = 2;
-    console.log(a);
-    
-    console.log(b);
-    let b = 2;
-    console.log(b);
-`,
+    code: {
+      src: jsQuiz8.src
+    },
     timer: 15
   },
   {
