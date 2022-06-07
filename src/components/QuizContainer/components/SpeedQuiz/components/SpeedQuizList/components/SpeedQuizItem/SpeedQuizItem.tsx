@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
+import Button from "src/components/Button";
 import Chip from "src/components/Chip";
 import Timer from "src/components/Timer";
 import Typography from "src/components/Typography";
@@ -75,8 +76,9 @@ const Question = styled(Typography, { label: "Question" })<{ index: number }>(
   ({ index }) => {
     if (!index)
       return {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: "bold",
+        marginBottom: 10,
         "&::before": {
           content: '"Q. "'
         }
@@ -91,6 +93,7 @@ const CandidateContainer = styled("div", {
   label: "CandidateContainer"
 })(() => {
   return {
+    // padding: 10,
     "& *": {
       fontFamily: "SUIT-Medium"
     }
@@ -101,17 +104,34 @@ const Candidate = styled(Typography, { label: "Candidate" })<{ index: number }>(
   ({ index }) => {
     const before = prefix[index];
     return {
+      padding: "10px 15px",
       cursor: "pointer",
       fontSize: 18,
-      marginBottom: 2,
+      borderBottom: `1px solid #eee`,
       "&::before": {
         display: "inline-block",
         content: `"${before}. "`,
         width: 25
+      },
+      // #c5c4c4
+      "&:hover": {
+        backgroundColor: "#aaa8a8"
       }
     };
   }
 );
+
+const NextButton = styled(Button, {
+  label: "NextButton"
+})(() => {
+  return {
+    borderRadius: 0,
+    width: "100%",
+    fontSize: 20,
+    border: 0,
+    color: "black"
+  };
+});
 
 const SpeedQuizItem = (props: SpeedQuizItemProps) => {
   const {
@@ -166,7 +186,7 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
         })}
       </QuestionContainer>
       {!!code && (
-        <div style={{ overflow: "hidden" }}>
+        <div style={{ overflow: "hidden", fontSize: 0 }}>
           <img src={code.src} alt={question[0]} />
         </div>
       )}
@@ -179,14 +199,14 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
           );
         })}
       </CandidateContainer>
-      <div>제출</div>
-      <button
+      <NextButton
+        color={color}
         onClick={() => {
           onChangeIndex();
         }}
       >
-        다음
-      </button>
+        Next
+      </NextButton>
     </Container>
   );
 };
