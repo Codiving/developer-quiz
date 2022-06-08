@@ -4,6 +4,7 @@ import Button from "src/components/Button";
 import Chip from "src/components/Chip";
 import Timer from "src/components/Timer";
 import Typography from "src/components/Typography";
+import { hexToRgbWithA } from "src/utils";
 import { prefix, SPEED_QUIZ_CATEGORY_DATA } from "../../../../common";
 import { SpeedQuizData } from "../../../../quizData";
 
@@ -22,26 +23,32 @@ const Container = styled("div", {
   };
 });
 
-const UITimer = styled(Timer, {
-  label: "SpeedQuizItemTimer"
+const TimerContainer = styled("div", {
+  label: "TimerContainer"
 })(() => {
   return {
     width: "100%",
-    borderBottom: "1px solid #eee",
     padding: 10
   };
 });
 
+const UITimer = styled(Timer, {
+  label: "SpeedQuizItemTimer"
+})(() => {
+  return {};
+});
+
 const CategoryContainer = styled("div", {
   label: "CategoryContainer"
-})(() => {
+})<{ color: string }>(({ color }) => {
+  const backgroundColor = hexToRgbWithA(color, 0.1);
   return {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     fontSize: 14,
-    borderBottom: "1px solid #eee",
-    padding: 10
+    padding: 10,
+    backgroundColor
   };
 });
 
@@ -64,30 +71,31 @@ const QuestionContainer = styled("div", {
   label: "QuestionContainer"
 })(() => {
   return {
-    borderBottom: "1px solid #eee",
     padding: 10,
+    borderBottom: "1px solid #eee",
     "& *": {
       fontFamily: "SUIT-Medium"
     }
   };
 });
 
-const Question = styled(Typography, { label: "Question" })<{ index: number }>(
-  ({ index }) => {
-    if (!index)
-      return {
-        fontSize: 20,
-        fontWeight: "bold",
-        marginBottom: 10,
-        "&::before": {
-          content: '"Q. "'
-        }
-      };
+const Question = styled(Typography, { label: "Question" })<{
+  index: number;
+  mb: boolean;
+}>(({ index, mb }) => {
+  if (!index)
     return {
-      marginBottom: 2
+      fontSize: 20,
+      fontWeight: "bold",
+      marginBottom: mb ? 10 : undefined,
+      "&::before": {
+        content: '"Q. "'
+      }
     };
-  }
-);
+  return {
+    marginBottom: 2
+  };
+});
 
 const CandidateContainer = styled("div", {
   label: "CandidateContainer"
@@ -115,11 +123,18 @@ const Candidate = styled(Typography, { label: "Candidate" })<{ index: number }>(
       },
       // #c5c4c4
       "&:hover": {
-        backgroundColor: "#aaa8a8"
+        backgroundColor: "#aaa8a8",
+        color: "white"
       }
     };
   }
 );
+
+const ButtonContainer = styled("div", {
+  label: "ButtonContainer"
+})(() => {
+  return {};
+});
 
 const NextButton = styled(Button, {
   label: "NextButton"
@@ -130,6 +145,23 @@ const NextButton = styled(Button, {
     fontSize: 20,
     border: 0,
     color: "black"
+  };
+});
+
+const WarningContainer = styled("div", {
+  label: "WarningContainer"
+})(() => {
+  return {
+    padding: 10
+  };
+});
+
+const WarningText = styled(Typography, {
+  label: "WarningText"
+})(() => {
+  return {
+    color: "gray",
+    textAlign: "center"
   };
 });
 
@@ -158,56 +190,75 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
   }, [timer]);
 
   return (
-    <Container code={!!code}>
-      <UITimer
-        value={1000000}
-        onChange={() => {
-          setCount(count - 1);
-          onChangeIndex();
-        }}
-        shakingCount={3}
-      />
-      <CategoryContainer>
-        <CategoryChip startIcon={startIcon({ style: iconStyle })} color={color}>
-          {type}
-        </CategoryChip>
-        <CurrentQuizCount>
-          <Typography>{currentCount + 1}</Typography> /{" "}
-          <Typography>{totalCount}</Typography>
-        </CurrentQuizCount>
-      </CategoryContainer>
-      <QuestionContainer>
-        {question.map((text, index) => {
-          return (
-            <Question component="p" key={text} index={index}>
-              {text}
-            </Question>
-          );
-        })}
-      </QuestionContainer>
-      {!!code && (
-        <div style={{ overflow: "hidden", fontSize: 0 }}>
-          <img src={code.src} alt={question[0]} />
-        </div>
-      )}
-      <CandidateContainer>
-        {candidates.map((text, index) => {
-          return (
-            <Candidate component="p" key={text} index={index}>
-              {text}
-            </Candidate>
-          );
-        })}
-      </CandidateContainer>
-      <NextButton
-        color={color}
-        onClick={() => {
-          onChangeIndex();
-        }}
-      >
-        Next
-      </NextButton>
-    </Container>
+    <>
+      <Container code={!!code}>
+        <TimerContainer>
+          <UITimer
+            value={5555555}
+            onChange={() => {
+              setCount(count - 1);
+              onChangeIndex();
+            }}
+            shakingCount={3}
+          />
+        </TimerContainer>
+        <CategoryContainer color={color}>
+          <CategoryChip
+            startIcon={startIcon({ style: iconStyle })}
+            color={color}
+          >
+            {type}
+          </CategoryChip>
+          <CurrentQuizCount>
+            <Typography>{currentCount + 1}</Typography> /{" "}
+            <Typography>{totalCount}</Typography>
+          </CurrentQuizCount>
+        </CategoryContainer>
+        <QuestionContainer>
+          {question.map((text, index) => {
+            return (
+              <Question
+                component="p"
+                key={text}
+                index={index}
+                mb={question.length > 1}
+              >
+                {text}
+              </Question>
+            );
+          })}
+        </QuestionContainer>
+        {!!code && (
+          <div style={{ overflow: "hidden", fontSize: 0 }}>
+            <img src={code.src} alt={question[0]} />
+          </div>
+        )}
+        <CandidateContainer>
+          {candidates.map((text, index) => {
+            return (
+              <Candidate component="p" key={text} index={index}>
+                {text}
+              </Candidate>
+            );
+          })}
+        </CandidateContainer>
+        <ButtonContainer>
+          <NextButton
+            color={color}
+            onClick={() => {
+              onChangeIndex();
+            }}
+          >
+            Next
+          </NextButton>
+        </ButtonContainer>
+      </Container>
+
+      <WarningContainer>
+        <WarningText component="p">이전 문제로 돌아가지 못 합니다.</WarningText>
+        <WarningText component="p">신중히 선택해주세요.</WarningText>
+      </WarningContainer>
+    </>
   );
 };
 
