@@ -11,6 +11,7 @@ interface TimerProps {
   onChange: () => void;
   interval?: number;
   shakingCount?: number;
+  onTrigger?: () => void;
 }
 
 const shaking = keyframes`
@@ -69,13 +70,18 @@ const Timer = (props: TimerProps) => {
     value,
     onChange,
     interval = 1000,
-    shakingCount = 0
+    shakingCount = 0,
+    onTrigger
   } = props;
 
   const [count, setCount] = useState(value);
 
   const onChangeCount = () => {
     const nextCount = count - 1;
+
+    if (onTrigger && nextCount === shakingCount) {
+      onTrigger();
+    }
 
     if (nextCount) setCount(nextCount);
     else {
