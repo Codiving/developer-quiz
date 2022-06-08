@@ -19,19 +19,19 @@ const shaking = keyframes`
   }
 
   15% {
-    transform: translate(-3px, -1px) rotate(3deg)
+    transform: translate(-1px, -1px) rotate(2deg)
   }
 
   30% {
-    transform: translate(-1px, -2px) rotate(-2deg)
+    transform: translate(-1px, -1.5px) rotate(-2deg)
   }
 
   45% {
-    transform: translate(1px, 3px) rotate(0deg)
+    transform: translate(1px, 1.5px) rotate(0deg)
   } 
 
   60% {
-    transform: translate(-1px, -2px) rotate(-3deg)
+    transform: translate(-1px, -2px) rotate(-2deg)
   } 
 
   75% {
@@ -39,11 +39,11 @@ const shaking = keyframes`
   }
 
   90% {
-    transform: translate(1px, 2px) rotate(2deg)
+    transform: translate(1px, 1.5px) rotate(2deg)
   }
 
   to {
-    transform: translate(-1px, -2px) rotate(0deg)
+    transform: translate(-1px, -1.5px) rotate(0deg)
   }
 `;
 
