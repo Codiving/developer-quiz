@@ -41,4 +41,14 @@ export interface SpeedQuizListProps {
   isQuizPage: boolean;
   onChangeIsQuizPage: () => void;
   quizList: SpeedQuizData[];
+  answers: string[];
+  onChangeAnswers: (answer: string) => void;
+}
+
+export interface SpeedQuizItemProps extends SpeedQuizData {
+  onChangeIndex: () => void;
+  currentCount: number;
+  totalCount: number;
+  answers: string[];
+  onChangeAnswers: (answer: string) => void;
 }

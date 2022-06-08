@@ -16,7 +16,7 @@ const SpeedQuiz = () => {
   const [categories, setCategories] = useState<SpeedQuizCategory[]>([]);
   const [count, setCount] = useState<SpeedQuizCount>(SPEED_QUIZ_COUNT[0]);
   const [quizList, setQuizList] = useState<SpeedQuizData[]>([]);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<string[]>([]);
   const [isQuizPage, setIsQuizPage] = useState(false);
 
   const onChangeOnlyBookmarked = useCallback(
@@ -50,6 +50,10 @@ const SpeedQuiz = () => {
     []
   );
 
+  const onChangeAnswers = useCallback((answer: string) => {
+    setAnswers(prev => [...prev, answer]);
+  }, []);
+
   return (
     <Container>
       <SpeedQuizGeneratorContainer
@@ -69,6 +73,8 @@ const SpeedQuiz = () => {
           isQuizPage={isQuizPage}
           onChangeIsQuizPage={onChangeIsQuizPage}
           quizList={quizList}
+          answers={answers}
+          onChangeAnswers={onChangeAnswers}
         />
       )}
     </Container>

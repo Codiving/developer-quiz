@@ -63,7 +63,7 @@ export const Web: SpeedQuizData[] = [
       "그런데 길동이는 A 사이트에 접속을 하였다.",
       "이러한 일이 일어날 수 있는가?"
     ],
-    candidates: ["O", "X"],
+    candidates: ["O", "X", "a", "b"],
     answer: "O",
     keywords: ["DNS", "Domain Name"],
     messages: [

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { SpeedQuizListProps } from "../../types";
 import { SpeedQuizItem } from "./components";
 
@@ -16,6 +16,7 @@ const Container = styled("div", {
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
+    flexDirection: "column",
     width: "100%",
     top: 0,
     left: 0,
@@ -26,19 +27,24 @@ const Container = styled("div", {
 });
 
 const SpeedQuizList = (props: SpeedQuizListProps) => {
-  const { isQuizPage, onChangeIsQuizPage, quizList } = props;
+  const { isQuizPage, onChangeIsQuizPage, quizList, answers } = props;
   const [index, setIndex] = useState(0);
 
   const totalCount = useMemo(() => quizList.length, [quizList.length]);
+
+  const onChangeIndex = useCallback(() => setIndex(prev => prev + 1), []);
+
+  console.log("answers", answers);
 
   return (
     <Container isQuizPage={isQuizPage}>
       {index < totalCount && (
         <SpeedQuizItem
           {...quizList[index]}
-          onChangeIndex={() => setIndex(index + 1)}
+          onChangeIndex={onChangeIndex}
           currentCount={index}
           totalCount={totalCount}
+          {...props}
         />
       )}
     </Container>
