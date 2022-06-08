@@ -33,7 +33,6 @@ const SpeedQuizList = (props: SpeedQuizListProps) => {
 
   return (
     <Container isQuizPage={isQuizPage}>
-      <button onClick={onChangeIsQuizPage}>asd</button>
       {index < totalCount && (
         <SpeedQuizItem
           {...quizList[index]}
