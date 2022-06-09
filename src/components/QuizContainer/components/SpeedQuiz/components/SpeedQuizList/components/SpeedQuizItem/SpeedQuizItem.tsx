@@ -219,7 +219,6 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
     onChangeAnswers
   } = props;
 
-  const chanceIndex = getChanceIndex(candidates, answer);
   const { color, iconStyle, startIcon } = SPEED_QUIZ_CATEGORY_DATA[type];
 
   const [tempAnswer, setTempAnswer] = useState("");
@@ -233,6 +232,11 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
     if (candidates.length <= 2) return;
     setChance(true);
   };
+
+  const chanceIndex = useMemo(
+    () => getChanceIndex(candidates, answer),
+    [answer, candidates]
+  );
 
   const onNextQuiz = useCallback(() => {
     setChance(false);
