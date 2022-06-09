@@ -34,8 +34,6 @@ const SpeedQuizList = (props: SpeedQuizListProps) => {
 
   const onChangeIndex = useCallback(() => setIndex(prev => prev + 1), []);
 
-  console.log("answers", answers);
-
   return (
     <Container isQuizPage={isQuizPage}>
       {index < totalCount && (
