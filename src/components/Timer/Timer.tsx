@@ -6,6 +6,7 @@ import { keyframes } from "@emotion/react";
 import Typography from "../Typography";
 
 interface TimerProps {
+  id: string;
   className?: string;
   value: number;
   onChange: () => void;
@@ -66,6 +67,7 @@ const Container = styled("div", {
 
 const Timer = (props: TimerProps) => {
   const {
+    id,
     className,
     value,
     onChange,
@@ -94,7 +96,7 @@ const Timer = (props: TimerProps) => {
 
   useEffect(() => {
     setCount(value);
-  }, [value]);
+  }, [value, id]);
 
   return (
     <Container className={className} shakingCount={shakingCount} count={count}>

@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Button from "src/components/Button";
 import Chip from "src/components/Chip";
 import Timer from "src/components/Timer";
@@ -261,7 +261,8 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
       <Container code={!!code}>
         <TimerContainer>
           <UITimer
-            value={timer!}
+            id={id}
+            value={timer}
             onChange={onNextQuiz}
             shakingCount={3}
             onTrigger={onTrigger}
