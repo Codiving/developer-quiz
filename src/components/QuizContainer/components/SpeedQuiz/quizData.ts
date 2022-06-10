@@ -65,7 +65,7 @@ export interface SpeedQuizData {
   keywords: Keywords[];
   messages: string[];
   code?: any;
-  timer?: number;
+  timer: number;
 }
 
 export const Web: SpeedQuizData[] = [
