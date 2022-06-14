@@ -77,97 +77,106 @@ export const Web: SpeedQuizData[] = [
       "A 사이트에 접속할 수 없는가?"
     ],
     candidates: ["O", "X", "a", "b"],
-    answer: "O",
+    answer: "X",
     keywords: ["DNS", "Domain Name"],
     messages: [
       "DNS 서버가 다운되어도 서버가 IP 직접 접근을 막지 않은 경우 IP로 접근이 가능합니다."
     ],
     timer: 5
+  },
+  {
+    type: "Web",
+    question: ["Browser 렌더링 과정에서 reflow는 repaint 다음으로 이루어진다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["Reflow 과정을 거친 후 Repaint가 일어납니다."],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["display:none; 은 렌더 트리에 포함되지 않는다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["화면에 보이지 않으므로 렌더 트리에 포함되지 않습니다."],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["visibility:hidden; 은 렌더 트리에 포함되지 않는다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["화면에 영역이 포시되므로 렌더 트리에 포함됩니다."],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["쿠키는 서버에서 관리하는 정보이다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["쿠키는 브라우저에서 관리합니다."],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["세션으로 로그인 유지 기능을 구현할 수 있다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: [],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["jwt를 사용하면 세션보다 서버에 부담이 덜하다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: [],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["jwt를 사용하면 강제 로그아웃 기능을 구현할 수 있다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["jwt만을 이용해서는 강제 로그아웃 기능을 구현하기 힘듭니다."],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["쿠키보다 세션이 보안에 더 좋다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: [
+      "쿠키는 브라우저 세션은 서버에서 관리합니다.",
+      "따라서 세션이 보안이 더 뛰어납니다."
+    ],
+    timer: 5,
+    id: uuid()
+  },
+  {
+    type: "Web",
+    question: ["CORS는 서버에서 띄우는 에러이다."],
+    candidates: ["O", "X", "Q"],
+    answer: "X",
+    keywords: [],
+    messages: ["CORS 에러는 브라우저에서 띄웁니다."],
+    timer: 5,
+    id: uuid()
   }
-  // {
-  //   type: "Web",
-  //   question: ["Browser 렌더링 과정에서 reflow는 repaint 다음으로 이루어진다."],
-  //   candidates: ["O", "X"],
-  //   answer: "X",
-  //   keywords: ["브라우저 렌더링", "Reflow", "Repaint"],
-  //   messages: ["Reflow 과정을 거친 후 Repaint가 일어납니다."],
-  //   link: ["https://codiving.kr/144"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["display:none; 은 렌더 트리에 포함되지 않는다."],
-  //   candidates: ["O", "X"],
-  //   answer: "O",
-  //   keywords: ["렌더 트리", "Render Tree"],
-  //   messages: ["화면에 보이지 않으므로 렌더 트리에 포함되지 않습니다."],
-  //   link: ["https://codiving.kr/144"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["visibility:hidden; 은 렌더 트리에 포함되지 않는다."],
-  //   candidates: ["O", "X"],
-  //   answer: "X",
-  //   keywords: ["렌더 트리", "Render Tree"],
-  //   messages: ["화면에 영역이 포시되므로 렌더 트리에 포함됩니다."],
-  //   link: ["https://codiving.kr/144"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["쿠키는 서버에서 관리하는 정보이다."],
-  //   candidates: ["O", "X"],
-  //   answer: "X",
-  //   keywords: ["쿠키", "세션"],
-  //   messages: ["쿠키는 브라우저에서 관리합니다."],
-  //   link: ["https://codiving.kr/145"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["세션으로 로그인 유지 기능을 구현할 수 있다."],
-  //   candidates: ["O", "X"],
-  //   answer: "O",
-  //   keywords: ["쿠키", "세션"],
-  //   messages: [],
-  //   link: ["https://codiving.kr/145"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["jwt를 사용하면 세션보다 서버에 부담이 덜하다."],
-  //   candidates: ["O", "X"],
-  //   answer: "O",
-  //   keywords: ["쿠키", "세션", "jwt"],
-  //   messages: [],
-  //   link: ["https://codiving.kr/145"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["jwt를 사용하면 강제 로그아웃 기능을 구현할 수 있다."],
-  //   candidates: ["O", "X"],
-  //   answer: "X",
-  //   keywords: ["쿠키", "세션", "jwt"],
-  //   messages: ["jwt만을 이용해서는 강제 로그아웃 기능을 구현하기 힘듭니다."],
-  //   link: ["https://codiving.kr/145"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["쿠키보다 세션이 보안에 더 좋다."],
-  //   candidates: ["O", "X"],
-  //   answer: "O",
-  //   keywords: ["쿠키", "세션"],
-  //   messages: [
-  //     "쿠키는 브라우저 세션은 서버에서 관리합니다.",
-  //     "따라서 세션이 보안이 더 뛰어납니다."
-  //   ],
-  //   link: ["https://codiving.kr/145"]
-  // },
-  // {
-  //   type: "Web",
-  //   question: ["CORS는 서버에서 띄우는 에러이다."],
-  //   candidates: ["O", "X"],
-  //   answer: "X",
-  //   keywords: ["CORS"],
-  //   messages: ["CORS 에러는 브라우저에서 띄웁니다."],
-  //   link: ["https://codiving.kr/146"]
-  // }
 ];
 
 export const JavaScript: SpeedQuizData[] = [
