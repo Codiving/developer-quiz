@@ -198,7 +198,7 @@ const getChanceIndex = (candidates: string[], answer: string): number => {
   });
 
   const result = Math.floor(Math.random() * list.length);
-  return result;
+  return list[result];
 };
 
 const SpeedQuizItem = (props: SpeedQuizItemProps) => {
@@ -253,8 +253,6 @@ const SpeedQuizItem = (props: SpeedQuizItemProps) => {
     onChangeIndex();
     setTempAnswer("");
   };
-
-  console.log("timer", timer);
 
   return (
     <>
