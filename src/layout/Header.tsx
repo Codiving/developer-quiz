@@ -14,10 +14,9 @@ const Header = () => {
       <Stack
         maxWidth={maxWidth}
         width="90%"
-        height="100%"
-        margin="0 auto"
+        fullHeight={true}
         alignItems="center"
-        flexDirection="row"
+        margin="0 auto"
       >
         <Typography component="h1" fontSize={32}>
           <Link href="/">개발자 상식 Quiz</Link>
